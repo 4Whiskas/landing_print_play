@@ -77,6 +77,7 @@ const CT = {
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.gif': 'image/gif', '.webp': 'image/webp', '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.woff': 'font/woff', '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
 };
 
 // Простейший анти-флуд: не больше N заявок с одного IP за окно
@@ -254,9 +255,12 @@ function serveStatic(req, res) {
   catch (e) { return sendText(res, 400, 'Bad request'); }
   if (pathname === '/') pathname = '/index.html';
 
-  // Наружу отдаём ТОЛЬКО страницу и /assets. Никаких config.json (с API-ключом),
-  // server.js, leads.log или uploads/ с фото клиентов.
-  const allowed = pathname === '/index.html' || pathname.startsWith('/assets/');
+  // Наружу отдаём ТОЛЬКО страницу, /assets и SEO-файлы. Никаких config.json
+  // (с API-ключом), server.js, leads.log или uploads/ с фото клиентов.
+  const allowed = pathname === '/index.html'
+    || pathname.startsWith('/assets/')
+    || pathname === '/robots.txt'
+    || pathname === '/sitemap.xml';
   if (!allowed) return sendText(res, 404, 'Не найдено');
 
   const filePath = path.normalize(path.join(ROOT, pathname));

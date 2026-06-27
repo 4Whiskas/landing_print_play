@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://printplay.tech/sitemap.xml
+Host: https://printplay.tech
