@@ -258,6 +258,7 @@ function serveStatic(req, res) {
   // Наружу отдаём ТОЛЬКО страницу, /assets и SEO-файлы. Никаких config.json
   // (с API-ключом), server.js, leads.log или uploads/ с фото клиентов.
   const allowed = pathname === '/index.html'
+    || pathname === '/privacy.html'
     || pathname.startsWith('/assets/')
     || pathname === '/robots.txt'
     || pathname === '/sitemap.xml';
