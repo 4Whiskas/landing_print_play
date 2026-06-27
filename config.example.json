@@ -1,0 +1,12 @@
+{
+  "port": 8080,
+  "host": "0.0.0.0",
+
+  "apiKey": "ВАШ_API_КЛЮЧ_UNISENDER_GO",
+  "senderName": "Print&Play",
+  "senderEmail": "zakaz@printplay.tech",
+  "recipientEmail": "pr1nt-play@yandex.ru",
+
+  "subjectPrefix": "Заявка с сайта Print&Play",
+  "saveUploads": false
+}

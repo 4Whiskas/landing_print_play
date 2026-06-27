@@ -1,0 +1,21 @@
+[Unit]
+Description=Print&Play landing (Node.js)
+After=network.target
+
+[Service]
+Type=simple
+# Папка, куда вы загрузили сайт на сервере:
+WorkingDirectory=/var/www/printplay
+ExecStart=/usr/bin/node /var/www/printplay/server.js
+Restart=always
+RestartSec=3
+# Можно задавать секреты прямо здесь вместо config.json:
+# Environment=UNISENDER_API_KEY=xxxx
+# Environment=SENDER_EMAIL=zakaz@printplay.tech
+# Environment=RECIPIENT_EMAIL=pr1nt-play@yandex.ru
+# Environment=SENDER_NAME=Print&Play
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

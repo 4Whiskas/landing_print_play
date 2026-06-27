@@ -1,0 +1,12 @@
+# Секреты и данные — НИКОГДА не коммитим
+config.json
+leads.log
+*.log
+
+# Загруженные фото (если включён saveUploads)
+uploads/
+
+# Системное
+.DS_Store
+Thumbs.db
+node_modules/

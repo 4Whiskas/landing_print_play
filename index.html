@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print&Play — студия 3D-печати и сканирования</title>
+<meta name="description" content="Студия 3D-печати и сканирования Print&Play. Инженерные детали с точностью до десятой миллиметра и авторские игрушки. Сканируем, моделируем, печатаем — партиями и поштучно.">
+<meta property="og:title" content="Print&Play — студия 3D-печати">
+<meta property="og:description" content="Из идеи — в пластик. Инженерные детали и авторские изделия на 3D-принтере.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/hero-bg.jpg">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Nunito',sans-serif;background:#15171C}
+img{max-width:100%}
+.mono{font-family:'JetBrains Mono',monospace}
+.disp{font-family:'Unbounded',sans-serif}
+.c-blue{color:#4D86FF}.c-coral{color:#FF6A4D}.c-ink{color:#15171C}.c-cream{color:#FFF4EA}.c-rose{color:#D85F73}.c-olive{color:#B7C26A}
+.s-ink{background:#15171C;color:#FFF4EA}
+.s-cream{background:#FFF4EA;color:#15171C}
+.s-peach{background:#FDE4CF;color:#15171C}
+.s-foot{background:#0F1115;color:#FFF4EA}
+.cont{max-width:1180px;margin:0 auto;padding:0 32px}
+.sec{padding:104px 0;position:relative;scroll-margin-top:80px}
+.h2{font-family:'Unbounded',sans-serif;font-weight:800;letter-spacing:-1px;line-height:1.06;margin:0}
+.lead{font-weight:600;line-height:1.55}
+.tab-eng{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#4D86FF}
+.tab-art{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#D85F73}
+/* flex utils */
+.fx{display:flex}.ac{align-items:center}.jb{justify-content:space-between}.wrap{flex-wrap:wrap}
+.gap8{gap:8px}.gap12{gap:12px}.gap16{gap:16px}.gap24{gap:24px}.w100{width:100%}
+.btn{border:none;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;border-radius:999px;padding:15px 28px;font-size:16px;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-coral{background:#FF6A4D;color:#fff;box-shadow:0 10px 26px rgba(255,106,77,.34)}
+.btn-blue{background:#4D86FF;color:#fff;box-shadow:0 10px 26px rgba(77,134,255,.32)}
+.btn-ghost-d{background:transparent;border:1.6px solid rgba(255,255,255,.3);color:#fff}
+.btn-ghost-l{background:transparent;border:1.6px solid rgba(21,23,28,.22);color:#15171C}
+.hdr{position:sticky;top:0;z-index:50;background:rgba(15,17,22,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.hdr-in{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;color:#FFF4EA;text-decoration:none}
+.nav{display:flex;align-items:center;gap:26px}
+.navlink{font-weight:700;font-size:15px;color:rgba(255,244,234,.78);text-decoration:none;cursor:pointer}
+.navlink:hover{color:#fff}
+.kick{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.grid-bp{background-image:linear-gradient(rgba(77,134,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(77,134,255,.08) 1px,transparent 1px);background-size:30px 30px}
+.t-dim{color:rgba(255,255,255,.6)}
+.cat{position:relative;border-radius:20px;overflow:hidden;height:320px;display:block;text-decoration:none;transition:transform .18s ease}
+.cat:hover{transform:translateY(-2px)}
+.cat-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.cat-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,22,0) 28%,rgba(15,17,22,.9))}
+.cat-body{position:absolute;left:0;right:0;bottom:0;padding:26px}
+.cat-tl{font-family:'Unbounded',sans-serif;font-weight:700;font-size:22px;color:#fff;letter-spacing:-.3px}
+.cat-ds{font-weight:600;font-size:14.5px;color:rgba(255,255,255,.82);margin-top:7px;line-height:1.4}
+.cat-tag{position:absolute;top:18px;left:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(15,17,22,.55);backdrop-filter:blur(5px);color:#cfe0ff;padding:6px 11px;border-radius:8px}
+.cat-tag-art{font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:.5px;text-transform:none;color:#ffd9c2;background:rgba(216,95,115,.5)}
+.duo{background:#1C1F26;border-radius:22px;padding:34px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.duo-warm{background:#fff;box-shadow:0 18px 50px rgba(180,120,80,.14)}
+.chip{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:500;color:#cfe0ff;background:rgba(77,134,255,.12);border:1px solid rgba(77,134,255,.3);padding:7px 12px;border-radius:7px}
+.chip-art{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:#A8485A;background:#FFE0CD;border:1px solid #FFC7AA;padding:7px 14px;border-radius:999px}
+.step{position:relative;padding-top:22px;border-top:2px solid rgba(21,23,28,.12)}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:14px;color:#4D86FF;letter-spacing:1px;font-weight:700}
+.step-tl{font-family:'Unbounded',sans-serif;font-weight:700;font-size:19px;margin:12px 0 8px;letter-spacing:-.3px}
+.matgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:16px}
+.matcard{background:#fff;border:1px solid rgba(21,23,28,.07);border-radius:16px;padding:20px 22px;box-shadow:0 8px 22px rgba(180,120,80,.07)}
+.matcard-cf{background:#15171C;border-color:rgba(255,255,255,.08);grid-column:span 3}
+.matname{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.3px;color:#15171C}
+.mtag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.5px;color:#2f6bff;background:rgba(77,134,255,.1);padding:5px 9px;border-radius:6px;white-space:nowrap}
+.matuse{font-weight:600;font-size:14.5px;color:rgba(21,23,28,.62);line-height:1.45;margin:10px 0 0}
+.mver{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#9a6b4a;background:#FBE9DA;padding:4px 10px;border-radius:999px}
+.shots{display:flex;gap:22px;align-items:flex-start}
+.shotcol{flex:1;min-width:0;display:flex;flex-direction:column;gap:22px}
+.shot{width:100%;display:block;border-radius:18px;box-shadow:0 14px 34px rgba(180,120,80,.16);border:1px solid rgba(21,23,28,.05)}
+.inp{width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.16);border-radius:13px;padding:15px 17px;color:#fff;font-family:'Nunito',sans-serif;font-size:16px;font-weight:600;outline:none}
+.inp::placeholder{color:rgba(255,255,255,.4)}
+.inp:focus{border-color:#FF6A4D}
+.flabel{font-weight:800;font-size:13px;letter-spacing:.5px;color:rgba(255,244,234,.6);text-transform:uppercase;margin-bottom:9px;display:block}
+.drop{border:1.6px dashed rgba(255,255,255,.26);border-radius:14px;padding:22px;text-align:center;cursor:pointer;display:block;transition:border-color .15s ease}
+.drop:hover,.drop.over{border-color:#FF6A4D}
+.thumb{position:relative;width:76px;height:76px;border-radius:11px;background-size:cover;background-position:center;border:1px solid rgba(255,255,255,.14)}
+.thumb-x{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;background:#FF6A4D;color:#fff;border:none;cursor:pointer;font-size:13px;line-height:22px;text-align:center;padding:0}
+.soc{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:15px 18px;text-decoration:none;color:#FFF4EA;transition:background .15s ease}
+.soc:hover{background:rgba(255,255,255,.1)}
+.soc-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Unbounded',sans-serif;font-weight:700;font-size:15px;color:#fff}
+.float-cta{position:fixed;right:26px;bottom:26px;z-index:60;display:inline-flex;align-items:center;gap:9px;background:#FF6A4D;color:#fff;font-weight:800;font-size:15px;padding:14px 22px;border-radius:999px;box-shadow:0 14px 34px rgba(255,106,77,.5);text-decoration:none;transition:transform .15s ease}
+.float-cta:hover{transform:translateY(-2px)}
+.gridcols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.gridcols4{display:grid;grid-template-columns:repeat(auto-fit,minmax(218px,1fr));gap:26px}
+.gridcols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.hero-right{position:absolute;top:0;bottom:0;right:0;width:48%;background-image:url(assets/hero-right.jpg);background-size:cover;background-position:30% center;clip-path:polygon(24% 0,100% 0,100% 100%,6% 100%)}
+.hero-h1{font-size:64px;line-height:1.02;margin:22px 0 0}
+@media(max-width:860px){
+  .hero-right{display:none}
+  .hero-h1{font-size:44px}
+  .sec{padding:72px 0}
+  .matcard-cf{grid-column:auto}
+  .shots{flex-direction:column}
+  .nav .navlink{display:none}
+}
+@media(max-width:560px){
+  .cont{padding:0 20px}
+  .hero-h1{font-size:36px}
+  .h2{font-size:34px!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<div class="hdr"><div class="cont hdr-in">
+<a href="#top" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none"><img src="assets/logo.png" alt="Print&Play" style="height:38px;border-radius:9px;flex-shrink:0"><span class="logo">Print<span class="c-coral">&</span>Play</span></a>
+<div class="nav">
+<a class="navlink" href="#vitrina">Витрина</a>
+<a class="navlink" href="#process">Как работаем</a>
+<a class="navlink" href="#otzyvy">Отзывы</a>
+<a class="btn btn-coral" href="#zayavka" style="padding:11px 22px;font-size:15px">Оставить заявку</a>
+</div>
+</div></div>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="s-ink" style="position:relative;overflow:hidden;min-height:660px">
+<div style="position:absolute;inset:0;background-image:url(assets/hero-bg.jpg);background-size:cover;background-position:center;filter:grayscale(.3)"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(102deg,rgba(15,17,22,.95) 0%,rgba(15,17,22,.9) 44%,rgba(15,17,22,.3) 60%,rgba(15,17,22,.05) 72%)"></div>
+<div class="hero-right"></div>
+<div class="hero-right" style="background-image:linear-gradient(135deg,rgba(255,150,110,.2),rgba(255,106,77,.04))"></div>
+<div class="cont" style="position:relative;z-index:5;padding-top:118px;padding-bottom:96px">
+<div style="max-width:600px">
+<div class="kick c-blue">Print&amp;Play · 3D-печать · 3D-скан</div>
+<h1 class="disp c-cream hero-h1">Из идеи —<br>в <span class="c-coral">пластик</span>.</h1>
+<p class="lead t-dim" style="font-size:19px;margin:22px 0 32px;max-width:460px">Инженерные детали с точностью до десятой миллиметра и тёплые авторские игрушки. Сканируем, моделируем, печатаем — партиями и поштучно.</p>
+<div class="fx ac wrap gap12"><a class="btn btn-coral" href="#zayavka">Оставить заявку</a><a class="btn btn-ghost-d" href="#vitrina">Смотреть витрину</a></div>
+<div class="fx ac wrap gap24" style="margin-top:40px">
+<div><div class="disp c-cream" style="font-size:27px;font-weight:700">±0.1<span style="font-size:15px"> мм</span></div><div class="mono t-dim" style="font-size:12px;letter-spacing:1px">ТОЧНОСТЬ ПЕЧАТИ</div></div>
+<div style="width:1px;height:36px;background:rgba(255,255,255,.16)"></div>
+<div><div class="disp c-cream" style="font-size:27px;font-weight:700">Любой тираж</div><div class="mono t-dim" style="font-size:12px;letter-spacing:1px">ОТ ШТУКИ ДО ПАРТИИ</div></div>
+<div style="width:1px;height:36px;background:rgba(255,255,255,.16)"></div>
+<div><div class="disp c-cream" style="font-size:27px;font-weight:700">1–2 дня</div><div class="mono t-dim" style="font-size:12px;letter-spacing:1px">ОТВЕТ И СТАРТ</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ ИНТРО: две стихии ============ -->
+<section class="s-cream sec">
+<div class="cont">
+<div style="max-width:680px;margin:0 auto;text-align:center">
+<div class="tab-art">Две стихии одной студии</div>
+<h2 class="h2" style="font-size:44px;margin-top:14px">Печатаем и пользу,<br>и радость</h2>
+<p class="lead" style="font-size:18px;color:rgba(21,23,28,.65);margin-top:18px">Одни заказы решают задачу, другие — поднимают настроение. Мы одинаково любим и то, и другое.</p>
+</div>
+<div class="gridcols2" style="margin-top:54px">
+<div class="duo">
+<div class="tab-eng">// Инженерия</div>
+<h3 class="disp c-cream" style="font-size:28px;margin:14px 0 12px;letter-spacing:-.5px">Точность и польза</h3>
+<p class="lead" style="font-size:16px;color:rgba(255,255,255,.62)">Реверс-инжиниринг и сканирование деталей: повторяем оригинал, восстанавливаем то, что сломалось или больше не выпускается, и собираем уникальные механизмы по вашим чертежам и 3D-моделям.</p>
+<div class="fx wrap gap8" style="margin-top:auto;padding-top:22px"><span class="chip">механизмы под заказ</span><span class="chip">копия детали</span><span class="chip">3D-сканирование</span><span class="chip">реверс-инжиниринг</span><span class="chip">прототипирование</span><span class="chip">мелкая серия</span></div>
+</div>
+<div class="duo duo-warm">
+<div class="tab-art">Художка ✦</div>
+<h3 class="disp c-ink" style="font-size:28px;margin:14px 0 12px;letter-spacing:-.5px">Тепло и характер</h3>
+<p class="lead" style="font-size:16px;color:rgba(21,23,28,.6)">Подвижные зверьки-антистресс, брелоки, фигурки любимых героев и сувениры, которые приятно держать в руках. Подбираем цвета под настроение, печатаем на подарок и под себя, а на готовое изделие при желании добавляем имена и надписи.</p>
+<div class="fx wrap gap8" style="margin-top:auto;padding-top:22px"><span class="chip-art">брелоки</span><span class="chip-art">антистресс</span><span class="chip-art">фигурки</span><span class="chip-art">подарки</span><span class="chip-art">именные надписи</span><span class="chip-art">сувениры</span><span class="chip-art">любые цвета</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ ВИТРИНА ============ -->
+<section id="vitrina" class="s-ink sec grid-bp">
+<div class="cont">
+<div class="fx ac jb wrap gap16" style="margin-bottom:46px">
+<div>
+<div class="tab-eng">// Витрина</div>
+<h2 class="h2 c-cream" style="font-size:44px;margin-top:14px">Что мы печатаем</h2>
+</div>
+<p class="lead t-dim" style="font-size:17px;max-width:380px">От серийных партий для маркетплейсов до единичных вещей под конкретную задачу.</p>
+</div>
+<div class="gridcols3">
+<a class="cat" href="#zayavka"><div class="cat-img" style="background-image:url(assets/cat-toys.jpg);background-position:center 22%"></div><div class="cat-grad"></div><span class="cat-tag cat-tag-art">Хит</span><div class="cat-body"><div class="cat-tl">Игрушки и брелоки</div><div class="cat-ds">Артикуляционные зверьки, которые гнутся и двигаются — панды, корги, лисы, гуси.</div></div></a>
+<a class="cat" href="#zayavka"><div class="cat-img" style="background-image:url(assets/hero-bg.jpg)"></div><div class="cat-grad"></div><span class="cat-tag">Engineering</span><div class="cat-body"><div class="cat-tl">Инженерная печать</div><div class="cat-ds">Приспособления, держатели, резьбомеры, запчасти и оснастка под размер.</div></div></a>
+<a class="cat" href="#zayavka"><div class="cat-img" style="background-image:url(assets/cat-popculture.jpg);background-position:center 30%"></div><div class="cat-grad"></div><span class="cat-tag cat-tag-art">Поп-культура</span><div class="cat-body"><div class="cat-tl">Фигурки и тематика</div><div class="cat-ds">Любимые персонажи из игр, аниме и мультфильмов — от Стича до драконов.</div></div></a>
+<a class="cat" href="#zayavka"><div class="cat-img" style="background-image:url(assets/cat-custom2.jpg);background-position:center 35%"></div><div class="cat-grad"></div><span class="cat-tag cat-tag-art">На заказ</span><div class="cat-body"><div class="cat-tl">Индивидуальные заказы</div><div class="cat-ds">Литофании по вашему фото, именные подарки, любая идея в 3D.</div></div></a>
+<a class="cat" href="#zayavka"><div class="cat-img" style="background-image:url(assets/cat-auto.png);background-position:center 42%"></div><div class="cat-grad"></div><span class="cat-tag">Auto</span><div class="cat-body"><div class="cat-tl">Автомобильная сфера</div><div class="cat-ds">Масштабные модели авто, ключницы, держатели и тематика любимых марок.</div></div></a>
+<a class="cat" href="#strikeball"><div class="cat-img" style="background-image:url(assets/cat-strike.png);background-position:center 38%"></div><div class="cat-grad"></div><span class="cat-tag" style="color:#dbe6a8;background:rgba(40,46,28,.6)">Tactical</span><div class="cat-body"><div class="cat-tl">Страйкбол</div><div class="cat-ds">Тактический обвес и аксессуары, которых не найти в магазине.</div></div></a>
+</div>
+</div>
+</section>
+
+<!-- ============ КАК РАБОТАЕМ ============ -->
+<section id="process" class="s-cream sec">
+<div class="cont">
+<div class="tab-art">Как мы работаем</div>
+<h2 class="h2" style="font-size:44px;margin-top:14px;max-width:620px">Четыре шага от заявки до готовой вещи</h2>
+<div class="gridcols4" style="margin-top:54px">
+<div class="step"><div class="step-num">01</div><div class="step-tl">Заявка</div><p class="lead" style="font-size:15px;color:rgba(21,23,28,.6)">Опишите задачу и пришлите фото или референсы — обсудим детали и сроки.</p></div>
+<div class="step"><div class="step-num">02</div><div class="step-tl">Скан и модель</div><p class="lead" style="font-size:15px;color:rgba(21,23,28,.6)">Сканируем образец или моделируем с нуля. Согласуем форму и размеры.</p></div>
+<div class="step"><div class="step-num">03</div><div class="step-tl">Печать</div><p class="lead" style="font-size:15px;color:rgba(21,23,28,.6)">Подбираем материал и настройки под прочность, точность и внешний вид.</p></div>
+<div class="step"><div class="step-num">04</div><div class="step-tl">Постобработка</div><p class="lead" style="font-size:15px;color:rgba(21,23,28,.6)">Чистим, убираем поддержки и собираем. Передаём аккуратный готовый заказ.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ============ МАТЕРИАЛЫ ============ -->
+<section class="s-peach sec">
+<div class="cont">
+<div class="kick c-ink" style="font-size:12px;color:rgba(21,23,28,.5);margin-bottom:8px">МАТЕРИАЛЫ</div>
+<h3 class="h2" style="font-size:28px;margin:0 0 6px">Подбираем пластик под задачу</h3>
+<p class="lead" style="font-size:15px;color:rgba(21,23,28,.55);margin:0 0 26px;max-width:560px">Не разбираетесь в материалах — не страшно. Расскажите, где и как будет работать деталь, а мы подберём подходящий.</p>
+<div class="matgrid">
+<div class="matcard"><div class="fx ac jb gap8"><span class="matname">PLA</span><span class="mtag">ДЕКОР · АРТ</span></div><p class="matuse">Фигурки, сувениры и декор. Яркий и недорогой — для всего, что радует глаз.</p><div class="fx wrap gap8" style="margin-top:14px"><span class="mver">Marble · под камень</span><span class="mver">Matte · матовый</span><span class="mver">Silk · с блеском</span></div></div>
+<div class="matcard"><div class="fx ac jb gap8"><span class="matname">PETG</span><span class="mtag">ПРОЧНЫЙ</span></div><p class="matuse">Функциональные детали, держатели и корпуса. Крепкий и не боится влаги.</p></div>
+<div class="matcard"><div class="fx ac jb gap8"><span class="matname">TPU</span><span class="mtag">ГИБКИЙ</span></div><p class="matuse">Мягкий, как резина. Чехлы, упоры, амортизаторы, ремешки и заглушки.</p></div>
+<div class="matcard"><div class="fx ac jb gap8"><span class="matname">PA6</span><span class="mtag">ИЗНОСОСТОЙКИЙ</span></div><p class="matuse">Нейлон. Шестерни, втулки и нагруженные узлы. Там, где деталь терпит трение и нагрузку.</p></div>
+<div class="matcard"><div class="fx ac jb gap8"><span class="matname">ASA</span><span class="mtag">ДЛЯ УЛИЦЫ</span></div><p class="matuse">Не выгорает на солнце и держит погоду. Авто- и уличные детали надолго.</p></div>
+<div class="matcard matcard-cf"><div class="fx ac jb gap8"><span class="matname" style="color:#FFF4EA">Композит · CF / GF</span><span class="mtag" style="color:#dbe6a8;background:rgba(183,194,106,.16)">ИНЖЕНЕРНЫЙ</span></div><p class="matuse" style="color:rgba(255,244,234,.62)">Любой из этих пластиков с добавлением карбона (CF) или стекловолокна (GF) — максимальная жёсткость и прочность для нагруженных инженерных деталей.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ============ СТРАЙКБОЛ ============ -->
+<section id="strikeball" class="s-ink sec" style="position:relative;overflow:hidden">
+<div class="grid-bp" style="position:absolute;inset:0;opacity:.4"></div>
+<div style="position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(900px 360px at 80% 20%,rgba(183,194,106,.12),transparent)"></div>
+<div class="cont" style="position:relative;z-index:2">
+<div class="gridcols2" style="align-items:center;gap:48px">
+<div>
+<div class="mono c-olive" style="font-size:13px;letter-spacing:3px;text-transform:uppercase">// Страйкбол</div>
+<h2 class="h2 c-cream" style="font-size:42px;margin-top:14px">Печатаем то,<br>чего нет в магазине</h2>
+<p class="lead t-dim" style="font-size:17px;margin-top:18px;max-width:480px">Тактический обвес, крепления, подсумки, рукоятки и цельные сборки под ваше снаряжение. Прочные материалы, точная посадка, матовое покрытие.</p>
+<div class="fx wrap gap8" style="margin-top:24px"><span class="chip" style="color:#dbe6a8;background:rgba(183,194,106,.12);border-color:rgba(183,194,106,.3)">обвес</span><span class="chip" style="color:#dbe6a8;background:rgba(183,194,106,.12);border-color:rgba(183,194,106,.3)">крепления</span><span class="chip" style="color:#dbe6a8;background:rgba(183,194,106,.12);border-color:rgba(183,194,106,.3)">заглушки</span><span class="chip" style="color:#dbe6a8;background:rgba(183,194,106,.12);border-color:rgba(183,194,106,.3)">под заказ</span></div>
+<a class="btn btn-coral" href="#zayavka" style="margin-top:30px">Обсудить изделие</a>
+</div>
+<div style="height:380px;border-radius:20px;background-image:url(assets/strike-photo.png);background-size:cover;background-position:center"></div>
+</div>
+</div>
+</section>
+
+<!-- ============ ИНДИВИДУАЛЬНЫЕ ЗАКАЗЫ ============ -->
+<section class="s-cream sec">
+<div class="cont">
+<div class="gridcols2" style="align-items:center;gap:48px">
+<div style="border-radius:22px;overflow:hidden;height:380px;background-image:url(assets/cat-custom.jpg);background-size:cover;background-position:center;box-shadow:0 20px 50px rgba(180,120,80,.2)"></div>
+<div>
+<div class="tab-art">Индивидуальные заказы</div>
+<h2 class="h2" style="font-size:42px;margin-top:14px">Принесите идею —<br>напечатаем</h2>
+<p class="lead" style="font-size:17px;color:rgba(21,23,28,.62);margin-top:18px">Эскиз на салфетке, фото, ссылка или просто описание словами — этого достаточно, чтобы начать. Остальное сделаем мы.</p>
+<div style="margin-top:26px;display:flex;flex-direction:column;gap:14px">
+<div class="fx ac gap12"><span class="mono c-blue" style="font-weight:700">01</span><span class="lead" style="font-size:16px">Присылаете идею, фото или референс</span></div>
+<div class="fx ac gap12"><span class="mono c-blue" style="font-weight:700">02</span><span class="lead" style="font-size:16px">Готовим 3D-модель и согласуем с вами</span></div>
+<div class="fx ac gap12"><span class="mono c-blue" style="font-weight:700">03</span><span class="lead" style="font-size:16px">Печатаем, обрабатываем и отдаём результат</span></div>
+</div>
+<a class="btn btn-blue" href="#zayavka" style="margin-top:30px">Рассказать о заказе</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ ОТЗЫВЫ ============ -->
+<section id="otzyvy" class="s-peach sec">
+<div class="cont">
+<div style="text-align:center;max-width:560px;margin:0 auto">
+<div class="tab-art">Отзывы</div>
+<h2 class="h2" style="font-size:44px;margin-top:14px">Что говорят клиенты</h2>
+</div>
+<div class="shots" style="margin-top:50px">
+<div class="shotcol">
+<img class="shot" src="assets/review-1.png" alt="Отзыв клиента">
+<img class="shot" src="assets/review-2.png" alt="Отзыв клиента">
+<img class="shot" src="assets/review-3.png" alt="Отзыв клиента">
+</div>
+<div class="shotcol">
+<img class="shot" src="assets/review-4.png" alt="Отзыв клиента">
+<img class="shot" src="assets/review-5.png" alt="Отзыв клиента">
+<img class="shot" src="assets/review-6.png" alt="Отзыв клиента">
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ ФОРМА ЗАЯВКИ ============ -->
+<section id="zayavka" class="s-ink sec" style="position:relative;overflow:hidden">
+<div class="grid-bp" style="position:absolute;inset:0;opacity:.4"></div>
+<div class="cont" style="position:relative;z-index:2">
+<div class="gridcols2" style="align-items:start;gap:48px">
+<div>
+<div class="tab-eng">// Оставить заявку</div>
+<h2 class="h2 c-cream" style="font-size:44px;margin-top:14px">Расскажите,<br>что напечатать</h2>
+<p class="lead t-dim" style="font-size:17px;margin-top:18px;max-width:420px">Заполните форму — ответим в течение дня, подскажем материал и рассчитаем стоимость. Партия или одна вещь — без разницы.</p>
+<div style="margin-top:30px;display:flex;flex-direction:column;gap:12px;max-width:380px">
+<a class="soc" href="#zayavka"><div class="soc-ic" style="background:#2AABEE">TG</div><div><div style="font-weight:800;font-size:15px">Telegram</div><div style="font-size:13px;color:rgba(255,244,234,.5);font-weight:600">ссылка появится позже</div></div></a>
+<a class="soc" href="#zayavka"><div class="soc-ic" style="background:#0077FF">VK</div><div><div style="font-weight:800;font-size:15px">ВКонтакте</div><div style="font-size:13px;color:rgba(255,244,234,.5);font-weight:600">ссылка появится позже</div></div></a>
+<a class="soc" href="#zayavka"><div class="soc-ic" style="background:#0069FF">OZ</div><div><div style="font-weight:800;font-size:15px">Магазин на Ozon</div><div style="font-size:13px;color:rgba(255,244,234,.5);font-weight:600">ссылка появится позже</div></div></a>
+</div>
+</div>
+<div style="background:#1C1F26;border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:30px">
+
+<!-- success state -->
+<div id="sentState" style="display:none;text-align:center;padding:40px 10px">
+<div style="width:72px;height:72px;border-radius:50%;background:#FF6A4D;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:34px">✓</div>
+<h3 class="disp c-cream" style="font-size:26px;margin:0">Заявка отправлена!</h3>
+<p class="lead t-dim" style="font-size:16px;margin:14px 0 24px">Свяжемся с вами в течение дня. Спасибо, что выбрали Print&amp;Play.</p>
+<button type="button" class="btn btn-ghost-d" id="resetBtn">Отправить ещё одну</button>
+</div>
+
+<!-- form state -->
+<form id="leadForm" novalidate>
+<div style="margin-bottom:18px"><label class="flabel" for="f-name">Как вас зовут</label><input class="inp" id="f-name" name="name" placeholder="Имя" autocomplete="name"></div>
+<div style="margin-bottom:18px"><label class="flabel" for="f-contact">Контакт для связи</label><input class="inp" id="f-contact" name="contact" placeholder="Телефон, Telegram или e-mail"></div>
+<div style="margin-bottom:18px"><label class="flabel" for="f-desc">Что нужно напечатать</label><textarea class="inp" id="f-desc" name="desc" rows="4" placeholder="Опишите изделие, количество, сроки, пожелания по материалу и цвету"></textarea></div>
+<div style="margin-bottom:22px"><label class="flabel">Медиа · фото и референсы</label>
+<label class="drop" id="dropZone"><input type="file" id="f-files" accept="image/*" multiple style="display:none"><div class="mono c-blue" style="font-size:13px;letter-spacing:1px">+ ПРИКРЕПИТЬ ФАЙЛЫ</div><div class="t-dim" style="font-size:13px;margin-top:6px;font-weight:600">фото образца, эскиз или скрин — до 6 файлов</div></label>
+<div class="fx wrap gap8" id="thumbs" style="margin-top:14px"></div>
+</div>
+<div id="formError" style="display:none;background:rgba(255,106,77,.12);border:1px solid rgba(255,106,77,.4);color:#ffb3a3;border-radius:12px;padding:12px 14px;font-size:14px;font-weight:600;margin-bottom:16px"></div>
+<button type="submit" class="btn btn-coral w100" id="submitBtn" style="justify-content:center;width:100%">Отправить заявку</button>
+<p style="font-size:12.5px;color:rgba(255,244,234,.4);text-align:center;margin:14px 0 0;font-weight:600">Нажимая кнопку, вы соглашаетесь на обработку данных для ответа на заявку.</p>
+</form>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="s-foot" style="padding:64px 0 40px">
+<div class="cont">
+<div class="fx jb wrap gap24" style="align-items:flex-start">
+<div style="max-width:340px">
+<div class="logo" style="font-size:26px">Print<span class="c-coral">&</span>Play</div>
+<p class="lead" style="font-size:15px;color:rgba(255,244,234,.55);margin-top:14px">Студия 3D-печати и сканирования. От точной инженерии до тёплых игрушек — в одном месте.</p>
+</div>
+<div class="fx gap12 wrap">
+<a class="soc" href="#zayavka" style="min-width:150px"><div class="soc-ic" style="background:#2AABEE">TG</div><div style="font-weight:800;font-size:15px">Telegram</div></a>
+<a class="soc" href="#zayavka" style="min-width:150px"><div class="soc-ic" style="background:#0077FF">VK</div><div style="font-weight:800;font-size:15px">ВКонтакте</div></a>
+<a class="soc" href="#zayavka" style="min-width:150px"><div class="soc-ic" style="background:#0069FF">OZ</div><div style="font-weight:800;font-size:15px">Ozon</div></a>
+</div>
+</div>
+</div>
+</footer>
+
+<a class="float-cta" href="#zayavka">Быстрая заявка</a>
+
+<script>
+(function(){
+  "use strict";
+  var MAX_FILES = 6;
+  var MAX_SIDE = 1280;      // макс. сторона картинки после сжатия, px
+  var JPEG_QUALITY = 0.82;
+  var files = [];           // [{name, dataUrl}]
+
+  var fileInput = document.getElementById('f-files');
+  var dropZone  = document.getElementById('dropZone');
+  var thumbs    = document.getElementById('thumbs');
+  var form      = document.getElementById('leadForm');
+  var sentState = document.getElementById('sentState');
+  var resetBtn  = document.getElementById('resetBtn');
+  var submitBtn = document.getElementById('submitBtn');
+  var errorBox  = document.getElementById('formError');
+
+  function showError(msg){ errorBox.textContent = msg; errorBox.style.display = 'block'; }
+  function hideError(){ errorBox.style.display = 'none'; }
+
+  // Сжимаем изображение через canvas, возвращаем dataURL (JPEG)
+  function compress(file){
+    return new Promise(function(resolve, reject){
+      var img = new Image();
+      var url = URL.createObjectURL(file);
+      img.onload = function(){
+        URL.revokeObjectURL(url);
+        var w = img.width, h = img.height;
+        if (w > h && w > MAX_SIDE){ h = Math.round(h * MAX_SIDE / w); w = MAX_SIDE; }
+        else if (h >= w && h > MAX_SIDE){ w = Math.round(w * MAX_SIDE / h); h = MAX_SIDE; }
+        var canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        try { resolve(canvas.toDataURL('image/jpeg', JPEG_QUALITY)); }
+        catch(e){ reject(e); }
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); reject(new Error('bad image')); };
+      img.src = url;
+    });
+  }
+
+  function renderThumbs(){
+    thumbs.innerHTML = '';
+    files.forEach(function(f, i){
+      var t = document.createElement('div');
+      t.className = 'thumb';
+      t.style.backgroundImage = 'url(' + f.dataUrl + ')';
+      var x = document.createElement('button');
+      x.type = 'button'; x.className = 'thumb-x'; x.textContent = '×';
+      x.setAttribute('aria-label', 'Удалить');
+      x.onclick = function(){ files.splice(i, 1); renderThumbs(); };
+      t.appendChild(x);
+      thumbs.appendChild(t);
+    });
+  }
+
+  function addFiles(list){
+    hideError();
+    var arr = Array.prototype.slice.call(list).filter(function(f){ return /^image\//.test(f.type); });
+    var room = MAX_FILES - files.length;
+    if (arr.length > room){ arr = arr.slice(0, room); showError('Можно прикрепить не больше ' + MAX_FILES + ' файлов.'); }
+    Promise.all(arr.map(function(f){
+      return compress(f).then(function(dataUrl){ return { name: f.name, dataUrl: dataUrl }; })
+        .catch(function(){ return null; });
+    })).then(function(results){
+      results.forEach(function(r){ if (r) files.push(r); });
+      renderThumbs();
+    });
+  }
+
+  fileInput.addEventListener('change', function(e){ addFiles(e.target.files); fileInput.value = ''; });
+
+  // drag&drop
+  ['dragenter','dragover'].forEach(function(ev){
+    dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.add('over'); });
+  });
+  ['dragleave','drop'].forEach(function(ev){
+    dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.remove('over'); });
+  });
+  dropZone.addEventListener('drop', function(e){ if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    hideError();
+    var name    = form.name.value.trim();
+    var contact = form.contact.value.trim();
+    var desc    = form.desc.value.trim();
+
+    if (!name){ showError('Пожалуйста, представьтесь.'); form.name.focus(); return; }
+    if (!contact){ showError('Укажите контакт, чтобы мы могли ответить.'); form.contact.focus(); return; }
+
+    submitBtn.disabled = true;
+    var oldText = submitBtn.textContent;
+    submitBtn.textContent = 'Отправляем…';
+
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, contact: contact, desc: desc, files: files, page: location.href })
+    }).then(function(res){
+      return res.json().catch(function(){ return { ok: res.ok }; });
+    }).then(function(data){
+      if (data && data.ok){
+        form.style.display = 'none';
+        sentState.style.display = 'block';
+        form.reset(); files = []; renderThumbs();
+      } else {
+        showError((data && data.error) || 'Не удалось отправить. Попробуйте ещё раз или напишите нам в мессенджер.');
+      }
+    }).catch(function(){
+      showError('Сеть недоступна. Проверьте подключение и попробуйте снова.');
+    }).then(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = oldText;
+    });
+  });
+
+  resetBtn.addEventListener('click', function(){
+    sentState.style.display = 'none';
+    form.style.display = 'block';
+    hideError();
+  });
+})();
+</script>
+</body>
+</html>
